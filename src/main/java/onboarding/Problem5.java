@@ -22,7 +22,7 @@ public class Problem5 {
 
         for(int i = 0; i < moneyType.length; i++){
             int moneyNum = money / moneyType[i];
-            money -= moneyType[i] * moneyNum;
+            money -= moneyType[i] * moneyNum; // %= moneyType[i];
             answer.add(moneyNum);
         }
         answer.add(money);
