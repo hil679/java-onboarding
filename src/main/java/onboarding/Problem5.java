@@ -18,38 +18,13 @@ public class Problem5 {
     }
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>(); //new ArrayList<Integer>(9);
-        
-        int fiftyThousand = money / Money.FIFTY_THOUSAND.value;
-        money -= Money.FIFTY_THOUSAND.value * fiftyThousand;
-        answer.add(fiftyThousand);
+        int[] moneyType = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10};
 
-        int tenThousand = money / Money.TEN_THOUSAND.value;
-        money -= Money.TEN_THOUSAND.value * tenThousand;
-        answer.add(tenThousand);
-
-        int fiveThousand = money / Money.FIVE_THOUSAND.value;
-        money -= Money.FIVE_THOUSAND.value * fiveThousand;
-        answer.add(fiveThousand);
-
-        int thousand = money / Money.ONE_THOUSAND.value;
-        money -= Money.ONE_THOUSAND.value * thousand;
-        answer.add(thousand);
-
-        int fiveHundred = money / Money.FIVE_HUNDRED.value;
-        money -= Money.FIVE_HUNDRED.value * fiveHundred;
-        answer.add(fiveHundred);
-
-        int hundred = money / Money.ONE_HUNDRED.value;
-        money -= Money.ONE_HUNDRED.value * hundred;
-        answer.add(hundred);
-
-        int fifty = money / Money.FIFTY.value;
-        money -= Money.FIFTY.value * fifty;
-        answer.add(fifty);
-
-        int ten = money / Money.TEN.value;
-        money -= Money.TEN.value * ten;
-        answer.add(ten);
+        for(int i = 0; i < moneyType.length; i++){
+            int moneyNum = money / moneyType[i];
+            money -= moneyType[i] * moneyNum;
+            answer.add(moneyNum);
+        }
         answer.add(money);
 
         return answer;
