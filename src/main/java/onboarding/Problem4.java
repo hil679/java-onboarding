@@ -32,7 +32,6 @@ public class Problem4 {
 
         if(checkCapital(alphabet)){
             return Character.toString(CAPITAL_ADD - Integer.valueOf(alphabet));
-            //Character.getNumericValue(alphabet)
         }
         return Character.toString(SMALL_LETTER_ADD - Integer.valueOf(alphabet));
     }
