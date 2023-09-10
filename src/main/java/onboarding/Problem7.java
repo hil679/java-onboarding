@@ -29,14 +29,16 @@ public class Problem7 {
         }
 
         for(String visitor: visitors){
-            if(!userFriends.contains(visitor)) {
-                if (!userList.containsKey(visitor)) {
+            if(!userFriends.contains(visitor)) { // 친구면 추천할 이유가 없다 + visitor 중에는 자기 자신이 포함될 일이 없으므로 자기자신인지 확인할 필요없음.
+                if (!userList.containsKey(visitor)) { // 친구의 친구가 아닌 새로운 user면 put
                     userList.put(visitor, 1);
-                } else {
+                } else {//기존에 있다면 +1 하여 업데이트
                     userList.put(visitor, userList.get(visitor) + 1);
                 }
             }
         }
+
+        //sorting
         List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer>>(userList.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
             public int compare(Map.Entry<String, Integer> o1,
@@ -50,6 +52,8 @@ public class Problem7 {
         });
 
         HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+
+        //5명 이하 & 점수 0이 아닌 사람만 출력하기 위해
         int elemNum = 0;
         for (Map.Entry<String, Integer> userInfo : list) {
             if(elemNum == 5 || userInfo.getValue() == 0)
